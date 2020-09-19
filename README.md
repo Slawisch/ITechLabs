@@ -1,2 +1,2 @@
 Internet Technologies Labs
-https://slawisch.github.io/Lab_1/
+https://slawisch.github.io/ITechLabs/
