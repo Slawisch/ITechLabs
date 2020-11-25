@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+    
+    </script>
+</head>
+<body>
+
+<script>
+    let students = [];
+    let tempMarks = [];
+    let count1 = 0, count2 = 0, count3 = 0;
+    document.write('<input type="text" value="Surname" id = "name1">');
+    for(i=0;i<5;i++)document.write('<input type="number" max="5" min="0" value="5" class = "num">');
+    
+    document.write('<input type="button" value="Add student" onclick="GetMarks(); students.push({name: document.getElementById(\'name1\').value, marks: tempMarks})">');
+    document.write('<input type="button" value="Summarise" onclick="CountStudentsRate(); FillTable();" >');
+
+    function FillTable() {
+        document.write('<table width="400px" border="2">');
+        
+        document.writeln("<tr>");
+        document.write("<td> Отличников <\/td>");
+        document.write("<td> Хорошистов <\/td>");
+        document.write("<td> Неуспевающих <\/td>");
+        document.writeln("<\/tr>");
+        
+        document.writeln("<tr>");
+        document.write("<td>" +count1+ "<\/td>");
+        document.write("<td>" +count2+ "<\/td>");
+        document.write("<td>" +count3+ "<\/td>");
+        document.writeln("<\/tr>");
+        
+        document.write("<\/table> ");
+    }
+    
+    function CountStudentsRate() {
+        for(i =0;i<students.length;i++){
+            alert(students[i].name + " : " + students[i].marks);
+            var currentRate = 3;
+            for(j=0;j<5;j++){
+                var temp = students[i].marks[j];
+                if(temp > 3)
+                    continue;
+                if(temp == 3 && currentRate == 3){
+                    currentRate = 2;
+                continue;}
+                if(temp < 3)
+                    currentRate = 1;
+                break;
+            }
+            if(currentRate === 3)
+                count1++;
+            else if(currentRate === 2)
+                count2++;
+            else count3++;
+        }
+    }
+    
+    function GetMarks() {
+        tempMarks = [];
+        var t = document.getElementsByClassName('num');
+        for(i=0;i<5;i++) {
+            tempMarks.push(t[i].value);
+        }
+    }
+</script>
+
+</body>
+</html>
